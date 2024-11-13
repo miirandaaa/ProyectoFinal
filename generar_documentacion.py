@@ -1,11 +1,15 @@
 import pydoc
 import sys
 import argparse
+import os
 
 # Añadir el directorio raíz del proyecto al path
 sys.path.insert(0, "./")
 
 def generar_documentacion(modulo, salida):
+    # Crea el directorio de salida si no existe
+    os.makedirs(os.path.dirname(salida), exist_ok=True)
+    
     # Genera la documentación del módulo especificado
     with open(salida, 'w') as archivo:
         archivo.write(pydoc.html.page(pydoc.render_doc(modulo, renderer=pydoc.plaintext)))
