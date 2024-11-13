@@ -3,11 +3,12 @@ import os
 
 app = Flask(__name__)
 
-# Ruta principal que muestra la lista de módulos
 @app.route('/')
 def home():
+    print("Rendering index.html with modules:", modules)  # Línea de depuración
     modules = ["USQL", "SistemaPedidos", "Trivia"]
     return render_template("index.html", modules=modules)
+
 
 # Ruta para cada módulo que carga su documentación principal
 @app.route('/module/<name>')
