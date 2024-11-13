@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module USQL.src.usql_parser</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="USQL.html"><font color="#ffffff">USQL</font></a>.<a href="USQL.src.html"><font color="#ffffff">src</font></a>.usql_parser</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/miranda/Downloads/ProyectoFinal/USQL/src/usql_parser.py">/Users/miranda/Downloads/ProyectoFinal/USQL/src/usql_parser.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="ply.yacc.html">ply.yacc</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-p_comparador"><strong>p_comparador</strong></a>(p)</dt><dd><tt>comparador&nbsp;:&nbsp;GT<br>
+|&nbsp;LT<br>
+|&nbsp;EQUAL<br>
+|&nbsp;GE<br>
+|&nbsp;LE</tt></dd></dl>
+ <dl><dt><a name="-p_condicion"><strong>p_condicion</strong></a>(p)</dt><dd><tt>condicion&nbsp;:&nbsp;expresion&nbsp;<br>
+|&nbsp;expresion&nbsp;AND&nbsp;condicion</tt></dd></dl>
+ <dl><dt><a name="-p_consulta"><strong>p_consulta</strong></a>(p)</dt><dd><tt>consulta&nbsp;:&nbsp;consulta_seleccion<br>
+|&nbsp;consulta_insercion<br>
+|&nbsp;consulta_borrar<br>
+|&nbsp;consulta_actualizar<br>
+|&nbsp;consulta_alterar</tt></dd></dl>
+ <dl><dt><a name="-p_consulta_actualizar"><strong>p_consulta_actualizar</strong></a>(p)</dt><dd><tt>consulta_actualizar&nbsp;:&nbsp;ACTUALIZA&nbsp;nombre_tabla&nbsp;SETEA&nbsp;nombre_columna&nbsp;EQUAL&nbsp;valor&nbsp;DONDE&nbsp;condicion</tt></dd></dl>
+ <dl><dt><a name="-p_consulta_alterar"><strong>p_consulta_alterar</strong></a>(p)</dt><dd><tt>consulta_alterar&nbsp;:&nbsp;CAMBIA_LA_TABLA&nbsp;nombre_tabla&nbsp;AGREGA_LA_COLUMNA&nbsp;nombre_columna&nbsp;tipo_dato&nbsp;NO_NULO<br>
+|&nbsp;CAMBIA_LA_TABLA&nbsp;nombre_tabla&nbsp;ELIMINA_LA_COLUMNA&nbsp;nombre_columna</tt></dd></dl>
+ <dl><dt><a name="-p_consulta_borrar"><strong>p_consulta_borrar</strong></a>(p)</dt><dd><tt>consulta_borrar&nbsp;:&nbsp;BORRA_DE_LA&nbsp;nombre_tabla&nbsp;DONDE&nbsp;condicion</tt></dd></dl>
+ <dl><dt><a name="-p_consulta_insercion"><strong>p_consulta_insercion</strong></a>(p)</dt><dd><tt>consulta_insercion&nbsp;:&nbsp;METE_EN&nbsp;nombre_tabla&nbsp;LPAREN&nbsp;lista_columna&nbsp;RPAREN&nbsp;LOS_VALORES&nbsp;LPAREN&nbsp;lista_valores&nbsp;RPAREN</tt></dd></dl>
+ <dl><dt><a name="-p_consulta_seleccion"><strong>p_consulta_seleccion</strong></a>(p)</dt><dd><tt>consulta_seleccion&nbsp;:&nbsp;TRAEME&nbsp;TODO&nbsp;DE_LA_TABLA&nbsp;nombre_tabla&nbsp;DONDE&nbsp;condicion<br>
+|&nbsp;TRAEME&nbsp;LOS_DISTINTOS&nbsp;nombre_columna&nbsp;DE_LA_TABLA&nbsp;nombre_tabla&nbsp;DONDE&nbsp;condicion<br>
+|&nbsp;TRAEME&nbsp;CONTANDO&nbsp;LPAREN&nbsp;TODO&nbsp;RPAREN&nbsp;DE_LA_TABLA&nbsp;nombre_tabla&nbsp;AGRUPANDO_POR&nbsp;nombre_columna&nbsp;HAVING&nbsp;condicion<br>
+|&nbsp;TRAEME&nbsp;TODO&nbsp;DE_LA_TABLA&nbsp;nombre_tabla&nbsp;MEZCLANDO&nbsp;nombre_tabla&nbsp;EN&nbsp;nombre_columna&nbsp;EQUAL&nbsp;nombre_columna&nbsp;DONDE&nbsp;condicion</tt></dd></dl>
+ <dl><dt><a name="-p_elementos"><strong>p_elementos</strong></a>(p)</dt><dd><tt>elementos&nbsp;:&nbsp;TODO<br>
+|&nbsp;LOS_DISTINTOS&nbsp;nombre_columna<br>
+|&nbsp;CONTANDO&nbsp;LPAREN&nbsp;TODO&nbsp;RPAREN</tt></dd></dl>
+ <dl><dt><a name="-p_error"><strong>p_error</strong></a>(p)</dt></dl>
+ <dl><dt><a name="-p_expresion"><strong>p_expresion</strong></a>(p)</dt><dd><tt>expresion&nbsp;:&nbsp;nombre_columna&nbsp;comparador&nbsp;valor<br>
+|&nbsp;nombre_columna&nbsp;ENTRE&nbsp;valor&nbsp;AND&nbsp;valor</tt></dd></dl>
+ <dl><dt><a name="-p_lista_columna"><strong>p_lista_columna</strong></a>(p)</dt><dd><tt>lista_columna&nbsp;:&nbsp;nombre_columna&nbsp;COMMA&nbsp;lista_columna<br>
+|&nbsp;nombre_columna</tt></dd></dl>
+ <dl><dt><a name="-p_lista_valores"><strong>p_lista_valores</strong></a>(p)</dt><dd><tt>lista_valores&nbsp;:&nbsp;valor&nbsp;COMMA&nbsp;lista_valores<br>
+|&nbsp;valor</tt></dd></dl>
+ <dl><dt><a name="-p_nombre_columna"><strong>p_nombre_columna</strong></a>(p)</dt><dd><tt>nombre_columna&nbsp;:&nbsp;ID<br>
+|&nbsp;ID&nbsp;DOT&nbsp;ID</tt></dd></dl>
+ <dl><dt><a name="-p_nombre_tabla"><strong>p_nombre_tabla</strong></a>(p)</dt><dd><tt>nombre_tabla&nbsp;:&nbsp;ID</tt></dd></dl>
+ <dl><dt><a name="-p_tipo_dato"><strong>p_tipo_dato</strong></a>(p)</dt><dd><tt>tipo_dato&nbsp;:&nbsp;INT<br>
+|&nbsp;VARCHAR<br>
+|&nbsp;FLOAT<br>
+|&nbsp;DATE<br>
+|&nbsp;STRING</tt></dd></dl>
+ <dl><dt><a name="-p_valor"><strong>p_valor</strong></a>(p)</dt><dd><tt>valor&nbsp;:&nbsp;NUMBER<br>
+|&nbsp;STRING</tt></dd></dl>
+ <dl><dt><a name="-p_valores"><strong>p_valores</strong></a>(p)</dt><dd><tt>valores&nbsp;:&nbsp;STRING<br>
+|&nbsp;NUMBER</tt></dd></dl>
+ <dl><dt><a name="-parse_sql"><strong>parse_sql</strong></a>(consulta)</dt></dl>
+ <dl><dt><a name="-parse_usql"><strong>parse_usql</strong></a>(consulta)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>parser</strong> = &lt;ply.yacc.LRParser object&gt;<br>
+<strong>sql_usql_mapping</strong> = {'*': 'TODO', 'ADD COLUMN': 'AGREGA LA COLUMNA', 'ALTER TABLE': 'CAMBIA LA TABLA', 'BETWEEN': 'ENTRE', 'CAST': 'TRANSFORMA A', 'COUNT': 'CONTANDO', 'CREATE TABLE': 'CREA LA TABLA', 'DEFAULT': 'POR DEFECTO', 'DELETE FROM': 'BORRA DE LA', 'DISTINCT': 'LOS DISTINTOS', ...}<br>
+<strong>tokens</strong> = ['SELECT', 'FROM', 'WHERE', 'GROUP_BY', 'JOIN', 'ON', 'DISTINCT', 'COUNT', 'INSERT_INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE_FROM', 'ORDER_BY', 'LIMIT', 'HAVING', 'EXISTS', 'IN', 'BETWEEN', 'LIKE', ...]</td></tr></table>
+</body></html>

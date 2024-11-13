@@ -1,0 +1,1128 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ADD_COLUMN
+    ALTER_TABLE
+    ASTERISK
+    BETWEEN
+    CAST
+    COUNT
+    CREATE_TABLE
+    DEFAULT
+    DELETE_FROM
+    DISTINCT
+    DROP_COLUMN
+    DROP_TABLE
+    EXISTS
+    FOREIGN_KEY
+    FROM
+    GROUP_BY
+    IN
+    INSERT_INTO
+    IS_NULL
+    JOIN
+    LIKE
+    LIMIT
+    NOT_NULL
+    ON
+    OR
+    ORDER_BY
+    PRIMARY_KEY
+    SELECT
+    SEMICOLON
+    SET
+    UNIQUE
+    UPDATE
+    VALUES
+    WHERE
+
+Grammar
+
+Rule 0     S' -> consulta
+Rule 1     consulta -> consulta_seleccion
+Rule 2     consulta -> consulta_insercion
+Rule 3     consulta -> consulta_borrar
+Rule 4     consulta -> consulta_actualizar
+Rule 5     consulta -> consulta_alterar
+Rule 6     consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla DONDE condicion
+Rule 7     consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion
+Rule 8     consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+Rule 9     consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+Rule 10    consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+Rule 11    consulta_borrar -> BORRA_DE_LA nombre_tabla DONDE condicion
+Rule 12    consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor DONDE condicion
+Rule 13    consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO
+Rule 14    consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla ELIMINA_LA_COLUMNA nombre_columna
+Rule 15    tipo_dato -> INT
+Rule 16    tipo_dato -> VARCHAR
+Rule 17    tipo_dato -> FLOAT
+Rule 18    tipo_dato -> DATE
+Rule 19    tipo_dato -> STRING
+Rule 20    elementos -> TODO
+Rule 21    elementos -> LOS_DISTINTOS nombre_columna
+Rule 22    elementos -> CONTANDO LPAREN TODO RPAREN
+Rule 23    nombre_tabla -> ID
+Rule 24    lista_columna -> nombre_columna COMMA lista_columna
+Rule 25    lista_columna -> nombre_columna
+Rule 26    lista_valores -> valor COMMA lista_valores
+Rule 27    lista_valores -> valor
+Rule 28    valores -> STRING
+Rule 29    valores -> NUMBER
+Rule 30    nombre_columna -> ID
+Rule 31    nombre_columna -> ID DOT ID
+Rule 32    condicion -> expresion
+Rule 33    condicion -> expresion AND condicion
+Rule 34    expresion -> nombre_columna comparador valor
+Rule 35    expresion -> nombre_columna ENTRE valor AND valor
+Rule 36    comparador -> GT
+Rule 37    comparador -> LT
+Rule 38    comparador -> EQUAL
+Rule 39    comparador -> GE
+Rule 40    comparador -> LE
+Rule 41    valor -> NUMBER
+Rule 42    valor -> STRING
+
+Terminals, with rules where they appear
+
+ACTUALIZA            : 12
+ADD_COLUMN           : 
+AGREGA_LA_COLUMNA    : 13
+AGRUPANDO_POR        : 8
+ALTER_TABLE          : 
+AND                  : 33 35
+ASTERISK             : 
+BETWEEN              : 
+BORRA_DE_LA          : 11
+CAMBIA_LA_TABLA      : 13 14
+CAST                 : 
+COMMA                : 24 26
+CONTANDO             : 8 22
+COUNT                : 
+CREATE_TABLE         : 
+DATE                 : 18
+DEFAULT              : 
+DELETE_FROM          : 
+DE_LA_TABLA          : 6 7 8 9
+DISTINCT             : 
+DONDE                : 6 7 9 11 12
+DOT                  : 31
+DROP_COLUMN          : 
+DROP_TABLE           : 
+ELIMINA_LA_COLUMNA   : 14
+EN                   : 9
+ENTRE                : 35
+EQUAL                : 9 12 38
+EXISTS               : 
+FLOAT                : 17
+FOREIGN_KEY          : 
+FROM                 : 
+GE                   : 39
+GROUP_BY             : 
+GT                   : 36
+HAVING               : 8
+ID                   : 23 30 31 31
+IN                   : 
+INSERT_INTO          : 
+INT                  : 15
+IS_NULL              : 
+JOIN                 : 
+LE                   : 40
+LIKE                 : 
+LIMIT                : 
+LOS_DISTINTOS        : 7 21
+LOS_VALORES          : 10
+LPAREN               : 8 10 10 22
+LT                   : 37
+METE_EN              : 10
+MEZCLANDO            : 9
+NOT_NULL             : 
+NO_NULO              : 13
+NUMBER               : 29 41
+ON                   : 
+OR                   : 
+ORDER_BY             : 
+PRIMARY_KEY          : 
+RPAREN               : 8 10 10 22
+SELECT               : 
+SEMICOLON            : 
+SET                  : 
+SETEA                : 12
+STRING               : 19 28 42
+TODO                 : 6 8 9 20 22
+TRAEME               : 6 7 8 9
+UNIQUE               : 
+UPDATE               : 
+VALUES               : 
+VARCHAR              : 16
+WHERE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparador           : 34
+condicion            : 6 7 8 9 11 12 33
+consulta             : 0
+consulta_actualizar  : 4
+consulta_alterar     : 5
+consulta_borrar      : 3
+consulta_insercion   : 2
+consulta_seleccion   : 1
+elementos            : 
+expresion            : 32 33
+lista_columna        : 10 24
+lista_valores        : 10 26
+nombre_columna       : 7 8 9 9 12 13 14 21 24 25 34 35
+nombre_tabla         : 6 7 8 9 9 10 11 12 13 14
+tipo_dato            : 13
+valor                : 12 26 27 34 35 35
+valores              : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . consulta
+    (1) consulta -> . consulta_seleccion
+    (2) consulta -> . consulta_insercion
+    (3) consulta -> . consulta_borrar
+    (4) consulta -> . consulta_actualizar
+    (5) consulta -> . consulta_alterar
+    (6) consulta_seleccion -> . TRAEME TODO DE_LA_TABLA nombre_tabla DONDE condicion
+    (7) consulta_seleccion -> . TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion
+    (8) consulta_seleccion -> . TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+    (9) consulta_seleccion -> . TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+    (10) consulta_insercion -> . METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+    (11) consulta_borrar -> . BORRA_DE_LA nombre_tabla DONDE condicion
+    (12) consulta_actualizar -> . ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor DONDE condicion
+    (13) consulta_alterar -> . CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO
+    (14) consulta_alterar -> . CAMBIA_LA_TABLA nombre_tabla ELIMINA_LA_COLUMNA nombre_columna
+
+    TRAEME          shift and go to state 7
+    METE_EN         shift and go to state 8
+    BORRA_DE_LA     shift and go to state 9
+    ACTUALIZA       shift and go to state 10
+    CAMBIA_LA_TABLA shift and go to state 11
+
+    consulta                       shift and go to state 1
+    consulta_seleccion             shift and go to state 2
+    consulta_insercion             shift and go to state 3
+    consulta_borrar                shift and go to state 4
+    consulta_actualizar            shift and go to state 5
+    consulta_alterar               shift and go to state 6
+
+state 1
+
+    (0) S' -> consulta .
+
+
+
+state 2
+
+    (1) consulta -> consulta_seleccion .
+
+    $end            reduce using rule 1 (consulta -> consulta_seleccion .)
+
+
+state 3
+
+    (2) consulta -> consulta_insercion .
+
+    $end            reduce using rule 2 (consulta -> consulta_insercion .)
+
+
+state 4
+
+    (3) consulta -> consulta_borrar .
+
+    $end            reduce using rule 3 (consulta -> consulta_borrar .)
+
+
+state 5
+
+    (4) consulta -> consulta_actualizar .
+
+    $end            reduce using rule 4 (consulta -> consulta_actualizar .)
+
+
+state 6
+
+    (5) consulta -> consulta_alterar .
+
+    $end            reduce using rule 5 (consulta -> consulta_alterar .)
+
+
+state 7
+
+    (6) consulta_seleccion -> TRAEME . TODO DE_LA_TABLA nombre_tabla DONDE condicion
+    (7) consulta_seleccion -> TRAEME . LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion
+    (8) consulta_seleccion -> TRAEME . CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+    (9) consulta_seleccion -> TRAEME . TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+
+    TODO            shift and go to state 12
+    LOS_DISTINTOS   shift and go to state 13
+    CONTANDO        shift and go to state 14
+
+
+state 8
+
+    (10) consulta_insercion -> METE_EN . nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 15
+
+state 9
+
+    (11) consulta_borrar -> BORRA_DE_LA . nombre_tabla DONDE condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 17
+
+state 10
+
+    (12) consulta_actualizar -> ACTUALIZA . nombre_tabla SETEA nombre_columna EQUAL valor DONDE condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 18
+
+state 11
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA . nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO
+    (14) consulta_alterar -> CAMBIA_LA_TABLA . nombre_tabla ELIMINA_LA_COLUMNA nombre_columna
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 19
+
+state 12
+
+    (6) consulta_seleccion -> TRAEME TODO . DE_LA_TABLA nombre_tabla DONDE condicion
+    (9) consulta_seleccion -> TRAEME TODO . DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+
+    DE_LA_TABLA     shift and go to state 20
+
+
+state 13
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS . nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 21
+
+state 14
+
+    (8) consulta_seleccion -> TRAEME CONTANDO . LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+
+    LPAREN          shift and go to state 23
+
+
+state 15
+
+    (10) consulta_insercion -> METE_EN nombre_tabla . LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+
+    LPAREN          shift and go to state 24
+
+
+state 16
+
+    (23) nombre_tabla -> ID .
+
+    LPAREN          reduce using rule 23 (nombre_tabla -> ID .)
+    DONDE           reduce using rule 23 (nombre_tabla -> ID .)
+    SETEA           reduce using rule 23 (nombre_tabla -> ID .)
+    AGREGA_LA_COLUMNA reduce using rule 23 (nombre_tabla -> ID .)
+    ELIMINA_LA_COLUMNA reduce using rule 23 (nombre_tabla -> ID .)
+    MEZCLANDO       reduce using rule 23 (nombre_tabla -> ID .)
+    EN              reduce using rule 23 (nombre_tabla -> ID .)
+    AGRUPANDO_POR   reduce using rule 23 (nombre_tabla -> ID .)
+
+
+state 17
+
+    (11) consulta_borrar -> BORRA_DE_LA nombre_tabla . DONDE condicion
+
+    DONDE           shift and go to state 25
+
+
+state 18
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla . SETEA nombre_columna EQUAL valor DONDE condicion
+
+    SETEA           shift and go to state 26
+
+
+state 19
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla . AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO
+    (14) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla . ELIMINA_LA_COLUMNA nombre_columna
+
+    AGREGA_LA_COLUMNA shift and go to state 27
+    ELIMINA_LA_COLUMNA shift and go to state 28
+
+
+state 20
+
+    (6) consulta_seleccion -> TRAEME TODO DE_LA_TABLA . nombre_tabla DONDE condicion
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA . nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 29
+
+state 21
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna . DE_LA_TABLA nombre_tabla DONDE condicion
+
+    DE_LA_TABLA     shift and go to state 30
+
+
+state 22
+
+    (30) nombre_columna -> ID .
+    (31) nombre_columna -> ID . DOT ID
+
+    DE_LA_TABLA     reduce using rule 30 (nombre_columna -> ID .)
+    COMMA           reduce using rule 30 (nombre_columna -> ID .)
+    RPAREN          reduce using rule 30 (nombre_columna -> ID .)
+    ENTRE           reduce using rule 30 (nombre_columna -> ID .)
+    GT              reduce using rule 30 (nombre_columna -> ID .)
+    LT              reduce using rule 30 (nombre_columna -> ID .)
+    EQUAL           reduce using rule 30 (nombre_columna -> ID .)
+    GE              reduce using rule 30 (nombre_columna -> ID .)
+    LE              reduce using rule 30 (nombre_columna -> ID .)
+    INT             reduce using rule 30 (nombre_columna -> ID .)
+    VARCHAR         reduce using rule 30 (nombre_columna -> ID .)
+    FLOAT           reduce using rule 30 (nombre_columna -> ID .)
+    DATE            reduce using rule 30 (nombre_columna -> ID .)
+    STRING          reduce using rule 30 (nombre_columna -> ID .)
+    $end            reduce using rule 30 (nombre_columna -> ID .)
+    HAVING          reduce using rule 30 (nombre_columna -> ID .)
+    DONDE           reduce using rule 30 (nombre_columna -> ID .)
+    DOT             shift and go to state 31
+
+
+state 23
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN . TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+
+    TODO            shift and go to state 32
+
+
+state 24
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN . lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+    (24) lista_columna -> . nombre_columna COMMA lista_columna
+    (25) lista_columna -> . nombre_columna
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    lista_columna                  shift and go to state 33
+    nombre_columna                 shift and go to state 34
+
+state 25
+
+    (11) consulta_borrar -> BORRA_DE_LA nombre_tabla DONDE . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    condicion                      shift and go to state 35
+    expresion                      shift and go to state 36
+    nombre_columna                 shift and go to state 37
+
+state 26
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA . nombre_columna EQUAL valor DONDE condicion
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 38
+
+state 27
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA . nombre_columna tipo_dato NO_NULO
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 39
+
+state 28
+
+    (14) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla ELIMINA_LA_COLUMNA . nombre_columna
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 40
+
+state 29
+
+    (6) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla . DONDE condicion
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla . MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+
+    DONDE           shift and go to state 41
+    MEZCLANDO       shift and go to state 42
+
+
+state 30
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA . nombre_tabla DONDE condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 43
+
+state 31
+
+    (31) nombre_columna -> ID DOT . ID
+
+    ID              shift and go to state 44
+
+
+state 32
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO . RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+
+    RPAREN          shift and go to state 45
+
+
+state 33
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna . RPAREN LOS_VALORES LPAREN lista_valores RPAREN
+
+    RPAREN          shift and go to state 46
+
+
+state 34
+
+    (24) lista_columna -> nombre_columna . COMMA lista_columna
+    (25) lista_columna -> nombre_columna .
+
+    COMMA           shift and go to state 47
+    RPAREN          reduce using rule 25 (lista_columna -> nombre_columna .)
+
+
+state 35
+
+    (11) consulta_borrar -> BORRA_DE_LA nombre_tabla DONDE condicion .
+
+    $end            reduce using rule 11 (consulta_borrar -> BORRA_DE_LA nombre_tabla DONDE condicion .)
+
+
+state 36
+
+    (32) condicion -> expresion .
+    (33) condicion -> expresion . AND condicion
+
+    $end            reduce using rule 32 (condicion -> expresion .)
+    AND             shift and go to state 48
+
+
+state 37
+
+    (34) expresion -> nombre_columna . comparador valor
+    (35) expresion -> nombre_columna . ENTRE valor AND valor
+    (36) comparador -> . GT
+    (37) comparador -> . LT
+    (38) comparador -> . EQUAL
+    (39) comparador -> . GE
+    (40) comparador -> . LE
+
+    ENTRE           shift and go to state 50
+    GT              shift and go to state 51
+    LT              shift and go to state 52
+    EQUAL           shift and go to state 53
+    GE              shift and go to state 54
+    LE              shift and go to state 55
+
+    comparador                     shift and go to state 49
+
+state 38
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna . EQUAL valor DONDE condicion
+
+    EQUAL           shift and go to state 56
+
+
+state 39
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna . tipo_dato NO_NULO
+    (15) tipo_dato -> . INT
+    (16) tipo_dato -> . VARCHAR
+    (17) tipo_dato -> . FLOAT
+    (18) tipo_dato -> . DATE
+    (19) tipo_dato -> . STRING
+
+    INT             shift and go to state 58
+    VARCHAR         shift and go to state 59
+    FLOAT           shift and go to state 60
+    DATE            shift and go to state 61
+    STRING          shift and go to state 62
+
+    tipo_dato                      shift and go to state 57
+
+state 40
+
+    (14) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla ELIMINA_LA_COLUMNA nombre_columna .
+
+    $end            reduce using rule 14 (consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla ELIMINA_LA_COLUMNA nombre_columna .)
+
+
+state 41
+
+    (6) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla DONDE . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    condicion                      shift and go to state 63
+    expresion                      shift and go to state 36
+    nombre_columna                 shift and go to state 37
+
+state 42
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO . nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 64
+
+state 43
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla . DONDE condicion
+
+    DONDE           shift and go to state 65
+
+
+state 44
+
+    (31) nombre_columna -> ID DOT ID .
+
+    DE_LA_TABLA     reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    COMMA           reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    RPAREN          reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    ENTRE           reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    GT              reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    LT              reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    EQUAL           reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    GE              reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    LE              reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    INT             reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    VARCHAR         reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    FLOAT           reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    DATE            reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    STRING          reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    $end            reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    HAVING          reduce using rule 31 (nombre_columna -> ID DOT ID .)
+    DONDE           reduce using rule 31 (nombre_columna -> ID DOT ID .)
+
+
+state 45
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN . DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+
+    DE_LA_TABLA     shift and go to state 66
+
+
+state 46
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN . LOS_VALORES LPAREN lista_valores RPAREN
+
+    LOS_VALORES     shift and go to state 67
+
+
+state 47
+
+    (24) lista_columna -> nombre_columna COMMA . lista_columna
+    (24) lista_columna -> . nombre_columna COMMA lista_columna
+    (25) lista_columna -> . nombre_columna
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 34
+    lista_columna                  shift and go to state 68
+
+state 48
+
+    (33) condicion -> expresion AND . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 36
+    condicion                      shift and go to state 69
+    nombre_columna                 shift and go to state 37
+
+state 49
+
+    (34) expresion -> nombre_columna comparador . valor
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    valor                          shift and go to state 70
+
+state 50
+
+    (35) expresion -> nombre_columna ENTRE . valor AND valor
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    valor                          shift and go to state 73
+
+state 51
+
+    (36) comparador -> GT .
+
+    NUMBER          reduce using rule 36 (comparador -> GT .)
+    STRING          reduce using rule 36 (comparador -> GT .)
+
+
+state 52
+
+    (37) comparador -> LT .
+
+    NUMBER          reduce using rule 37 (comparador -> LT .)
+    STRING          reduce using rule 37 (comparador -> LT .)
+
+
+state 53
+
+    (38) comparador -> EQUAL .
+
+    NUMBER          reduce using rule 38 (comparador -> EQUAL .)
+    STRING          reduce using rule 38 (comparador -> EQUAL .)
+
+
+state 54
+
+    (39) comparador -> GE .
+
+    NUMBER          reduce using rule 39 (comparador -> GE .)
+    STRING          reduce using rule 39 (comparador -> GE .)
+
+
+state 55
+
+    (40) comparador -> LE .
+
+    NUMBER          reduce using rule 40 (comparador -> LE .)
+    STRING          reduce using rule 40 (comparador -> LE .)
+
+
+state 56
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL . valor DONDE condicion
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    valor                          shift and go to state 74
+
+state 57
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato . NO_NULO
+
+    NO_NULO         shift and go to state 75
+
+
+state 58
+
+    (15) tipo_dato -> INT .
+
+    NO_NULO         reduce using rule 15 (tipo_dato -> INT .)
+
+
+state 59
+
+    (16) tipo_dato -> VARCHAR .
+
+    NO_NULO         reduce using rule 16 (tipo_dato -> VARCHAR .)
+
+
+state 60
+
+    (17) tipo_dato -> FLOAT .
+
+    NO_NULO         reduce using rule 17 (tipo_dato -> FLOAT .)
+
+
+state 61
+
+    (18) tipo_dato -> DATE .
+
+    NO_NULO         reduce using rule 18 (tipo_dato -> DATE .)
+
+
+state 62
+
+    (19) tipo_dato -> STRING .
+
+    NO_NULO         reduce using rule 19 (tipo_dato -> STRING .)
+
+
+state 63
+
+    (6) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla DONDE condicion .
+
+    $end            reduce using rule 6 (consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla DONDE condicion .)
+
+
+state 64
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla . EN nombre_columna EQUAL nombre_columna DONDE condicion
+
+    EN              shift and go to state 76
+
+
+state 65
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 37
+    condicion                      shift and go to state 77
+    expresion                      shift and go to state 36
+
+state 66
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA . nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion
+    (23) nombre_tabla -> . ID
+
+    ID              shift and go to state 16
+
+    nombre_tabla                   shift and go to state 78
+
+state 67
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES . LPAREN lista_valores RPAREN
+
+    LPAREN          shift and go to state 79
+
+
+state 68
+
+    (24) lista_columna -> nombre_columna COMMA lista_columna .
+
+    RPAREN          reduce using rule 24 (lista_columna -> nombre_columna COMMA lista_columna .)
+
+
+state 69
+
+    (33) condicion -> expresion AND condicion .
+
+    $end            reduce using rule 33 (condicion -> expresion AND condicion .)
+
+
+state 70
+
+    (34) expresion -> nombre_columna comparador valor .
+
+    AND             reduce using rule 34 (expresion -> nombre_columna comparador valor .)
+    $end            reduce using rule 34 (expresion -> nombre_columna comparador valor .)
+
+
+state 71
+
+    (41) valor -> NUMBER .
+
+    AND             reduce using rule 41 (valor -> NUMBER .)
+    $end            reduce using rule 41 (valor -> NUMBER .)
+    DONDE           reduce using rule 41 (valor -> NUMBER .)
+    COMMA           reduce using rule 41 (valor -> NUMBER .)
+    RPAREN          reduce using rule 41 (valor -> NUMBER .)
+
+
+state 72
+
+    (42) valor -> STRING .
+
+    AND             reduce using rule 42 (valor -> STRING .)
+    $end            reduce using rule 42 (valor -> STRING .)
+    DONDE           reduce using rule 42 (valor -> STRING .)
+    COMMA           reduce using rule 42 (valor -> STRING .)
+    RPAREN          reduce using rule 42 (valor -> STRING .)
+
+
+state 73
+
+    (35) expresion -> nombre_columna ENTRE valor . AND valor
+
+    AND             shift and go to state 80
+
+
+state 74
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor . DONDE condicion
+
+    DONDE           shift and go to state 81
+
+
+state 75
+
+    (13) consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO .
+
+    $end            reduce using rule 13 (consulta_alterar -> CAMBIA_LA_TABLA nombre_tabla AGREGA_LA_COLUMNA nombre_columna tipo_dato NO_NULO .)
+
+
+state 76
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN . nombre_columna EQUAL nombre_columna DONDE condicion
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 82
+
+state 77
+
+    (7) consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion .
+
+    $end            reduce using rule 7 (consulta_seleccion -> TRAEME LOS_DISTINTOS nombre_columna DE_LA_TABLA nombre_tabla DONDE condicion .)
+
+
+state 78
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla . AGRUPANDO_POR nombre_columna HAVING condicion
+
+    AGRUPANDO_POR   shift and go to state 83
+
+
+state 79
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN . lista_valores RPAREN
+    (26) lista_valores -> . valor COMMA lista_valores
+    (27) lista_valores -> . valor
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    lista_valores                  shift and go to state 84
+    valor                          shift and go to state 85
+
+state 80
+
+    (35) expresion -> nombre_columna ENTRE valor AND . valor
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    valor                          shift and go to state 86
+
+state 81
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor DONDE . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 37
+    condicion                      shift and go to state 87
+    expresion                      shift and go to state 36
+
+state 82
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna . EQUAL nombre_columna DONDE condicion
+
+    EQUAL           shift and go to state 88
+
+
+state 83
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR . nombre_columna HAVING condicion
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 89
+
+state 84
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores . RPAREN
+
+    RPAREN          shift and go to state 90
+
+
+state 85
+
+    (26) lista_valores -> valor . COMMA lista_valores
+    (27) lista_valores -> valor .
+
+    COMMA           shift and go to state 91
+    RPAREN          reduce using rule 27 (lista_valores -> valor .)
+
+
+state 86
+
+    (35) expresion -> nombre_columna ENTRE valor AND valor .
+
+    AND             reduce using rule 35 (expresion -> nombre_columna ENTRE valor AND valor .)
+    $end            reduce using rule 35 (expresion -> nombre_columna ENTRE valor AND valor .)
+
+
+state 87
+
+    (12) consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor DONDE condicion .
+
+    $end            reduce using rule 12 (consulta_actualizar -> ACTUALIZA nombre_tabla SETEA nombre_columna EQUAL valor DONDE condicion .)
+
+
+state 88
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL . nombre_columna DONDE condicion
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 92
+
+state 89
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna . HAVING condicion
+
+    HAVING          shift and go to state 93
+
+
+state 90
+
+    (10) consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN .
+
+    $end            reduce using rule 10 (consulta_insercion -> METE_EN nombre_tabla LPAREN lista_columna RPAREN LOS_VALORES LPAREN lista_valores RPAREN .)
+
+
+state 91
+
+    (26) lista_valores -> valor COMMA . lista_valores
+    (26) lista_valores -> . valor COMMA lista_valores
+    (27) lista_valores -> . valor
+    (41) valor -> . NUMBER
+    (42) valor -> . STRING
+
+    NUMBER          shift and go to state 71
+    STRING          shift and go to state 72
+
+    valor                          shift and go to state 85
+    lista_valores                  shift and go to state 94
+
+state 92
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna . DONDE condicion
+
+    DONDE           shift and go to state 95
+
+
+state 93
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 37
+    condicion                      shift and go to state 96
+    expresion                      shift and go to state 36
+
+state 94
+
+    (26) lista_valores -> valor COMMA lista_valores .
+
+    RPAREN          reduce using rule 26 (lista_valores -> valor COMMA lista_valores .)
+
+
+state 95
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE . condicion
+    (32) condicion -> . expresion
+    (33) condicion -> . expresion AND condicion
+    (34) expresion -> . nombre_columna comparador valor
+    (35) expresion -> . nombre_columna ENTRE valor AND valor
+    (30) nombre_columna -> . ID
+    (31) nombre_columna -> . ID DOT ID
+
+    ID              shift and go to state 22
+
+    nombre_columna                 shift and go to state 37
+    condicion                      shift and go to state 97
+    expresion                      shift and go to state 36
+
+state 96
+
+    (8) consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion .
+
+    $end            reduce using rule 8 (consulta_seleccion -> TRAEME CONTANDO LPAREN TODO RPAREN DE_LA_TABLA nombre_tabla AGRUPANDO_POR nombre_columna HAVING condicion .)
+
+
+state 97
+
+    (9) consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion .
+
+    $end            reduce using rule 9 (consulta_seleccion -> TRAEME TODO DE_LA_TABLA nombre_tabla MEZCLANDO nombre_tabla EN nombre_columna EQUAL nombre_columna DONDE condicion .)
+
