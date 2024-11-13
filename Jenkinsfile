@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Setting up environment...'
                 // Instalar dependencias globales si es necesario
-                sh 'pip install -r requirements.txt'
+                sh '/opt/homebrew/bin/pip3 install -r requirements.txt'
             }
         }
 
@@ -15,22 +15,22 @@ pipeline {
                 stage('Build Trivia') {
                     steps {
                         echo 'Building Trivia module...'
-                        // Instalar dependencias específicas de Trivia si las hay
-                        sh 'pip install -r Trivia/requirements.txt'
+                        // Instalar dependencias específicas de Trivia
+                        sh '/opt/homebrew/bin/pip3 install -r Trivia/requirements.txt'
                     }
                 }
                 stage('Build USQL') {
                     steps {
                         echo 'Building USQL module...'
-                        // Instalar dependencias específicas de USQL si las hay
-                        sh 'pip install -r USQL/requirements.txt'
+                        // Instalar dependencias específicas de USQL
+                        sh '/opt/homebrew/bin/pip3 install -r USQL/requirements.txt'
                     }
                 }
                 stage('Build SistemaPedidos') {
                     steps {
                         echo 'Building SistemaPedidos module...'
-                        // Instalar dependencias específicas de SistemaPedidos si las hay
-                        sh 'pip install -r SistemaPedidos/requirements.txt'
+                        // Instalar dependencias específicas de SistemaPedidos
+                        sh '/opt/homebrew/bin/pip3 install -r SistemaPedidos/requirements.txt'
                     }
                 }
             }
@@ -69,7 +69,7 @@ pipeline {
                 sh 'nohup python app.py &'
                 // Esperar un momento para asegurarse de que el servidor esté en ejecución
                 sleep 5
-                // Abrir la URL local en el navegador
+                // Mostrar la URL local
                 echo 'Application running at http://127.0.0.1:5000'
             }
         }
