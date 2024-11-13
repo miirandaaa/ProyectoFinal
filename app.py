@@ -5,10 +5,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    print("Rendering index.html with modules:", modules)  # Línea de depuración
     modules = ["USQL", "SistemaPedidos", "Trivia"]
+    print("Rendering index.html with modules:", modules)  # Línea de depuración
     return render_template("index.html", modules=modules)
-
 
 # Ruta para cada módulo que carga su documentación principal
 @app.route('/module/<name>')
