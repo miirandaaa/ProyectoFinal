@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <div>
+        {{ info|safe }}
+    </div>
+    <a href="{{ url_for('home') }}">Volver a la lista de módulos</a>
+</body>
+</html>
